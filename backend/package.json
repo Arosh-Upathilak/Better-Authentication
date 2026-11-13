@@ -7,22 +7,37 @@
   "scripts": {
     "dev": "nodemon --exec tsx src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "auth:generate": "npx @better-auth/cli@latest generate --config ./src/lib/auth.ts --output ./src/db/new-auth-schema.ts --yes",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio",
+    "db:push": "drizzle-kit push"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/nodemon": "^1.19.6",
+    "better-auth": "^1.7.22",
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",
+    "drizzle-orm": "^0.45.4",
     "express": "^5.3.0",
-    "nodemon": "^3.1.14"
+    "morgan": "^1.12.1",
+    "mysql2": "^3.24.6",
+    "nodemailer": "^10.5.0",
+    "nodemon": "^3.1.14",
+    "pino": "^10.4.0",
+    "pino-pretty": "^13.2.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
     "@types/node": "^26.6.6",
+    "drizzle-kit": "^0.31.11",
     "tsup": "^9.0.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"

@@ -1,10 +1,14 @@
-import express from "express";
-import "dotenv/config";
+import app from "./app";
+import { config } from "./config/env";
+import logger from "./config/logger";
 
-const app = express();
+async function start() {
+  app.listen(config.PORT, () => {
+    logger.info(`Server started at http://localhost:${config.PORT}`);
+  });
+}
 
-const port = process.env.PORT || 7000;
-
-app.listen(port,()=>{
-    console.log(`Server started at http://localhost:${port}`)
-})
+start().catch((error: unknown) => {
+  logger.error({ error }, "Failed to start server");
+  process.exit(0);
+});
